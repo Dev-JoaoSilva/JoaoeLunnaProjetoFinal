@@ -9,7 +9,16 @@
 <body>
     <h1>Proutos</h1>
     <table>
-        
+        <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+        </tr>
+        <c:forEach var="item" items="${produros}">
+            <tr>
+                <td>${item.id}</td>
+                <td>${item.titulo}</td>
+            </tr>
+        </c:forEach>
     </table>
 </body>
 </html>
