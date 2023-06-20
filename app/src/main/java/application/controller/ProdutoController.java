@@ -14,7 +14,7 @@ public class ProdutoController {
     private ProdutoRepository produtoRepo;
 
     public String list(Model model) {
-        model.addAttribute("produtos", produtoRepo.findAll());
-        return "/produto/list";
+        model.addAttribute("produto", produtoRepo.findAll());
+        return "/produto/list" ;
     }
 }
