@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Proutos</h1>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
     <table>
         <tr>
             <th>ID</th>

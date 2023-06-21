@@ -13,6 +13,7 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository produtoRepo;
 
+    @RequestMapping("/list")
     public String list(Model model) {
         model.addAttribute("produto", produtoRepo.findAll());
         return "/produto/list" ;
