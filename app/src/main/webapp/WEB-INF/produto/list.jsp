@@ -8,18 +8,26 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="container">
     <h1>Proutos</h1>
-    <table>
+    <a href="/produto/insert" class="btn btn-primary">Novo produto</a>
+    <table class="table">
         <tr>
             <th>ID</th>
             <th>Titulo</th>
+            <th>&nbsp;</th>
         </tr>
-        <c:forEach var="item" items="${produros}">
+        <c:forEach var="item" items="${produto}">
             <tr>
                 <td>${item.id}</td>
                 <td>${item.titulo}</td>
+                <td>
+                    <a href="/produto/update?id=${item.id}" class="btn btn-warning">Editar</a>
+                    <a href="/produto/delete?id=${item.id}" class="btn btn-danger">Excluir</a>
+                </td>
             </tr>
         </c:forEach>
-    </table>
+    </table>   
+</div>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package application.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +20,7 @@ public class ProdutoController {
 
     @RequestMapping("/list")
     public String list(Model model) {
-        model.addAttribute("produto", produtoRepo.findAll());
+        model.addAttribute("produtos", produtoRepo.findAll());
         return "/produto/list" ;
     }
 
@@ -37,5 +39,33 @@ public class ProdutoController {
 
         produtoRepo.save(produto);
         return "redirect:/produto/list";
+        }
+
+        @RequestMapping("/update")
+        public String update(Model model, @RequestParam("id") int id) {
+            Optional<Produto> produto = produtoRepo.findById(id);
+
+            if(produto.isPresent()) {
+                model.addAttribute("produto", produto);
+                return "/produto/update";
+            }
+
+            return "redirect:/produto/list";
+        }
+
+        @RequestMapping(value = "/update", method = RequestMethod.POST)
+        public String update(@RequestParam("id") int id, @RequestParam("titulo") String titulo, @RequestParam("descrição") String descricao) {
+
+            Optional<Produto> produto = produtoRepo.findById(id);
+
+            if(produto.isPresent()) {
+                produto.get().setTitulo(titulo);
+                produto.get().setDescricao(descricao);
+
+                produtoRepo.save(produto.get());
+            }
+            return "redirect:/produto/list";
+       
+
         }
 }
